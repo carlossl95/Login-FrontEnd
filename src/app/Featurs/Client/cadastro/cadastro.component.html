@@ -1,0 +1,285 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="col-2">
+                <h2>Cadastro:</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex justify-content-center mt-5 pl-5">
+            <div class="col-8">
+                <div class="row pl-5">
+                    <form [formGroup]="form" (ngSubmit)="Salvar()">
+                        <div class="row mb-3">
+
+                            <div class="col-4">
+                                <label for="name" class="form-label">Nome Completo*:</label>
+                                <input type="text" class="form-control" formControlName="name" id="name"
+                                    autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('name')?.valid || form.get('name')?.pristine">
+                                    <p *ngIf="form.get('name')?.errors?.['required']">O nome é Obrigatório!</p>
+                                    <p *ngIf="form.get('name')?.errors?.['minlength']">Minimo 3 caracteres!</p>
+                                    <p *ngIf="form.get('name')?.errors?.['maxlength']">Maximo 120 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+
+                                <label for="cpf" class="form-label">Cpf*:</label>
+                                <input type="text" class="form-control" formControlName="cpf" id="cpf"
+                                    onkeypress="$(this).mask('000.000.000-00')" autocomplete="off"
+                                    placeholder="xxx.xxx.xxx-xx">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('cpf')?.valid || form.get('cpf')?.pristine">
+                                    <p *ngIf="form.get('cpf')?.errors?.['required']">Cpf é Obrigatorio</p>
+                                    <p *ngIf="form.get('cpf')?.errors?.['minlength']">Cpf é composto por 11 digitos!</p>
+                                    <p *ngIf="form.get('cpf')?.errors?.['maxlength']">Maximo 14 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+
+                                <label for="phone" class="form-label">Celular*:</label>
+                                <input type="text" id="phone" class="form-control" formControlName="phone"
+                                    onkeypress="$(this).mask('(00) 00000-0009')" autocomplete="off"
+                                    placeholder="(DDD) 99999-9999">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('phone')?.valid || form.get('phone')?.pristine">
+                                    <p *ngIf="form.get('phone')?.errors?.['required']">Teledone é Obrigatorio</p>
+                                    <p *ngIf="form.get('phone')?.errors?.['minlength']">Telefone Incompleto</p>
+                                    <p *ngIf="form.get('phone')?.errors?.['maxlength']">Maximo 15 caracteres!</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-3">
+
+                            <div class="col-3">
+
+                                <label for="birthDate" class="form-label">Data Nascimento:</label>
+                                <input type="date" class="form-control" formControlName="birthDate" id="birthDate"
+                                    autocomplete="off">
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('birthDate')?.valid || form.get('birthDate')?.pristine">
+                                    <p *ngIf="form.get('birthDate')?.errors?.['required']">Data de nascimento é
+                                        obrigatória</p>
+                                </div>
+
+                            </div>
+
+                            <div class="col-3">
+                                <label for="Sex" class="form-label">Sexo*:</label>
+                                <select class="form-select" formControlName="sex" id="sex"
+                                    aria-label="Default select example">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                                    <option value="Prefiro nao Informar">Prefiro nao Informar</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-3">
+                                <label for="maritalStatus" class="form-label">Estado Civil*:</label>
+                                <select class="form-select" formControlName="maritalStatus" id="maritalStatus"
+                                    aria-label="Default select example">
+                                    <option value="Solteiro(a)">Solteiro(a)</option>
+                                    <option value="União Estável">União Estável</option>
+                                    <option value="Casado(a)">Casado(a)</option>
+                                    <option value="Divorciado(a)">Divorciado(a)</option>
+                                    <option value="Viuvo(a">Viuvo(a)</option>
+                                    <option value="Prefiro nao Informar">Prefiro nao Informar</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row mb-3">
+
+                            <div class="col-2 pr-0">
+                                <label for="cep" class="form-label">Cep*:</label>
+                                <input type="text" class="form-control" formControlName="cep" id="cep"
+                                    onkeypress="$(this).mask('00.000-000')" autocomplete="off" placeholder="00.000-000">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('cep')?.valid || form.get('cep')?.pristine">
+                                    <p *ngIf="form.get('cep')?.errors?.['required']">Cep é Obrigatório</p>
+                                    <p *ngIf="form.get('cep')?.errors?.['minlength']">Cep é composto por 8 digitos!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-1 mt-4 pl-2">
+                                
+                                <input type="submit" value="Buscar" (click)="SearchCep()" class="btn btn-outline-secondary btn-sm mt-2" 
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                
+
+                            </div>
+
+                            <div class="col-3 pl-5">
+                                <label for="city" class="form-label">Cidade*:</label>
+                                <input type="text" formControlName="city" id="city" class="form-control"
+                                    autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('city')?.valid || form.get('city')?.pristine">
+                                    <p *ngIf="form.get('city')?.errors?.['required']">Cidade é Obrigatório</p>
+                                    <p *ngIf="form.get('city')?.errors?.['minlength']">Cidade deve conter no minimo 3
+                                        caracteres</p>
+                                    <p *ngIf="form.get('city')?.errors?.['maxlength']">Maximo 30 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <label for="state" class="form-label">Estado*:</label>
+                                <input type="text" formControlName="state" id="state" class="form-control"
+                                    autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('state')?.valid || form.get('state')?.pristine">
+                                    <p *ngIf="form.get('state')?.errors?.['required']">Estado é Obrigatório</p>
+                                    <p *ngIf="form.get('state')?.errors?.['minlength']">Cidade deve conter no minimo 2
+                                        caracteres</p>
+                                    <p *ngIf="form.get('state')?.errors?.['maxlength']">Maximo 30 caracteres!</p>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row mb-3">
+
+                            <div class="col-2">
+                                <label for="neighborhood" class="form-label">Bairro*:</label>
+                                <input type="text" formControlName="neighborhood" id="neighborhood" class="form-control"
+                                    autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('neighborhood')?.valid || form.get('neighborhood')?.pristine">
+                                    <p *ngIf="form.get('neighborhood')?.errors?.['required']">Bairro é Obrigatório</p>
+                                    <p *ngIf="form.get('neighborhood')?.errors?.['minlength']">Bairro deve conter no
+                                        minimo 3 caracteres</p>
+                                    <p *ngIf="form.get('neighborhood')?.errors?.['maxlength']">Maximo 30 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <label for="street" class="form-label">Rua / Av.*:</label>
+                                <input type="text" class="form-control" formControlName="street" id="street"
+                                    autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('street')?.valid || form.get('street')?.pristine">
+                                    <p *ngIf="form.get('street')?.errors?.['required']">Rua/Av. é Obrigatório</p>
+                                    <p *ngIf="form.get('street')?.errors?.['minlength']">Deve conter no
+                                        minimo 3 caracteres</p>
+                                    <p *ngIf="form.get('street')?.errors?.['maxlength']">Maximo 70 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-2 sm-2">
+                                <label for="number" class="form-label">Numero*:</label>
+                                <input type="text" formControlName="number" id="number" class="form-control"
+                                    autocomplete="off">
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('number')?.valid || form.get('number')?.pristine">
+                                    <p *ngIf="form.get('number')?.errors?.['required']">Numero é Obrigatório</p>
+                                    <p *ngIf="form.get('number')?.errors?.['maxlength']">Maximo 5 digitos!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <label for="complementAddress" class="form-label">Complemento:</label>
+                                <input type="text" class="form-control" formControlName="complementAddress"
+                                    id="complementAddress" autocomplete="off">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('complementAddress')?.valid || form.get('complementAddress')?.pristine">
+                                    <p *ngIf="form.get('complementAddress')?.errors?.['maxlength']">Maximo 50
+                                        caracteres!</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-3">
+
+                            <div class="col-4">
+                                <label for="email" class="form-label">Email*:</label>
+                                <input type="email" id="email" formControlName="email" class="form-control"
+                                    autocomplete="off" onpaste="return false;" placeholder="nome@dominio.com">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('email')?.valid || form.get('email')?.pristine">
+                                    <p *ngIf="form.get('email')?.errors?.['required']">Email é Obrigatório</p>
+                                    <p *ngIf="form.get('email')?.errors?.['email']">Email invalido</p>
+                                    <p *ngIf="form.get('email')?.errors?.['maxlength']">Maximo 50 caracteres!</p>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="password" class="form-label">Senha*:</label>
+                                <input type="password" class="form-control" formControlName="password" id="password"
+                                    autocomplete="off" onpaste="return false;">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('password')?.valid || form.get('password')?.pristine">
+                                    <p *ngIf="form.get('password')?.errors?.['required']">Senha é Obrigatório</p>
+                                    <p *ngIf="form.get('password')?.errors?.['minlength']">Senha Deve conter no
+                                        minimo 8 caracteres</p>
+                                    <p *ngIf="form.get('password')?.errors?.['maxlength']">Maximo 20 caracteres!</p>
+                                    <p *ngIf="form.get('password')?.errors?.['pattern']">A senha deve conter pelo menos: <br>1 letra minúscula.<br>1 letra maiúscula.<br>1 número<br>1 caractere especial</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-3">
+
+                            <div class="col-4">
+                                <label for="confirmEmail" class="form-label">Confirme Email*:</label>
+                                <input type="confirmEmail" id="confirmEmail" formControlName="confirmEmail" class="form-control"
+                                    autocomplete="off" onpaste="return false;" placeholder="nome@dominio.com">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('email')?.valid || form.get('email')?.pristine">
+                                    <p *ngIf="form.get('email')?.errors?.['required']">Confirme Email é Obrigatório</p>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="confirmPassword" class="form-label">Confirme Senha*:</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword"
+                                    autocomplete="off" onpaste="return false;">
+
+                                <div class="alert alert-danger"
+                                    [hidden]="form.get('confirmPassword')?.valid || form.get('confirmPassword')?.pristine">
+                                    <p *ngIf="form.get('confirmPassword')?.errors?.['required']">Confirme Senha é Obrigatório</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-1 mb-5">
+                                <input type="submit" value="Cadastrar" class="btn btn-primary">
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

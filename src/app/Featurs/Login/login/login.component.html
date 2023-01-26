@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="col-1">
+                <h2>Login:</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="col-2">
+                <div class="row mt-5">
+                    <form [formGroup]="form" (ngSubmit)="Entrar()">
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" formControlName="email" id="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Senha:</label>
+                            <input type="password" class="form-control" formControlName="password" id="password">
+                        </div>
+                        
+
+                        <div>
+                            <a href="http://localhost:4200/Client/cadastro">Cadrastar</a>
+                        </div>
+
+                        <div class="text-center mt-1">
+                            <input type="submit" value="Entrar" class="btn btn-primary">
+                        </div>
+
+                        
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

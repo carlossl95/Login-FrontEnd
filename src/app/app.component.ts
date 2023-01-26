@@ -1,3 +1,4 @@
+import { LoginService } from './Featurs/Login/login.Service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Client';
+  constructor(private loginservice: LoginService){
+    
+  }
 }
